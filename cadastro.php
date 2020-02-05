@@ -2,7 +2,6 @@
 
 $login = $_POST['login']; //Atribui $login ao q foi digitado no campo de login la na tela cadastro.html.
 $senha = $_POST['senha']; // Atribui $senha ao que foi digitado no campo senha em cadastro.html.
-//$connect = mysqli_connect('127.0.0.1','root',''); // Abre conexão com BD.
 $sql["host"] = "localhost";
 $sql["usuario"] = "root";
 $sql["senha"] = "";
@@ -16,13 +15,13 @@ $logarray = $array['login'];
 
 if ($login == "" || $login == null)
 { // Situação que verifica se o campo login esta vazio.
-  echo "<script language='javascript' type='text/javascript'>
+  echo "<script language='javascript' class='alert alert-warning' type='text/javascript'>
   alert('O campo login deve ser preenchido');window.location.href='cadastro.html';</script>";
 }
 else {
   if ($logarray == $login)
   { // Situação que verifica se o usuario esta cadastrado no BD.
-    echo "<script language= 'javascript' type= 'text/javascript'>
+    echo "<script language= 'javascript' class='alert alert-warning' type= 'text/javascript'>
     alert('Esse login já existe');window.location.href='cadastro.html';</script>";
     die();
   }
@@ -32,12 +31,12 @@ else {
 
     if ($insert)
     { // Situação que retorna se o cadastro foi realizado com exito.
-      echo "<script language='javascript' type= 'text/javascript'>
+      echo "<script language='javascript' class='alert alert-success' type= 'text/javascript'>
       alert('Usuário cadastrado com sucesso!');window.location.href='login.html'</script>";
     }
     else
     { // Caso contrario ele retorna uma mensagem que não foi posivel cadastrar o msm.
-      echo"<script language='javascript' type='text/javascript'>
+      echo"<script language='javascript' class='alert alert-danger' type='text/javascript'>
       alert('Não foi possivel cadastrar esse usuario.')window.location.href='cadastro.html'</script>";
     }
   }

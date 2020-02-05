@@ -11,14 +11,18 @@ if (isset($entrar)) {
 
 
   if (mysqli_num_rows($verifica) <= 0) {
-    echo "<script language= 'javascript' type= 'text/javascript'>
+    echo "<script language= 'javascript' class='alert alert-warning' type= 'text/javascript'>
     alert('Login e/ou senha incorretos.');window.location.href='login.html';</script>";
-    echo $senha;
+    unset ($_SESSION['login']);
+    unset ($_SESSION['senha']);
 
     die();
   }else{
     setcookie("login",$login);
-    header("Location: index.html");
+    $_SESSION['login'] = $login;
+    $_SESSION['senha'] = $senha;
+
+    header("Location: painel.php");
   }
 }
 ?>
